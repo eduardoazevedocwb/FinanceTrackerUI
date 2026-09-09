@@ -1,4 +1,5 @@
-import { useNavigate, useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ArrowRight, Eye, EyeOff, ShieldCheck } from "lucide-react";
 import { Button } from "../components/ui";
 export default function Auth({ mode }: { mode: "login" | "register" | "forgot" | "reset" }) {

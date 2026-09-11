@@ -30,9 +30,12 @@ import { money, date } from "../lib/format";
 import { Card, Stat, Status, Button } from "../components/ui";
 import Page, { AddButton } from "../components/Page";
 import { useNavigate } from "react-router-dom";
+
 export default function Dashboard() {
+
   const nav = useNavigate();
   const total = accounts.reduce((s, a) => s + a.balance, 0);
+
   return (
     <Page
       eyebrow="SEPTEMBER 2026"

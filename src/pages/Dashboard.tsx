@@ -1,45 +1,24 @@
-import {
-  ArrowUpRight,
-  ArrowDownRight,
-  Wallet,
-  TrendingUp,
-  Target,
-  Receipt,
-  ChevronRight,
-  Plus,
-  MoreHorizontal,
-  ShieldCheck,
-  Sparkles,
-} from "lucide-react";
-import {
-  ResponsiveContainer,
-  AreaChart,
-  Area,
-  XAxis,
-  YAxis,
-  Tooltip,
-  BarChart,
-  Bar,
-  CartesianGrid,
-  PieChart,
-  Pie,
-  Cell,
-} from "recharts";
+import {useState} from 'react';
+import {ArrowUpRight,ArrowDownRight,Wallet,TrendingUp,Target,Receipt,ChevronRight,Plus,MoreHorizontal,ShieldCheck,Sparkles,} from "lucide-react";
+import {ResponsiveContainer,AreaChart,Area,XAxis,YAxis,Tooltip,BarChart,Bar,CartesianGrid,PieChart,Pie,Cell,} from "recharts";
 import { accounts, bills, categories, goals, monthly, transactions } from "../data/mock";
 import { money, date } from "../lib/format";
 import { Card, Stat, Status, Button } from "../components/ui";
 import Page, { AddButton } from "../components/Page";
 import { useNavigate } from "react-router-dom";
+import { getUserDisplayName } from "../services/authService";
 
 export default function Dashboard() {
 
   const nav = useNavigate();
   const total = accounts.reduce((s, a) => s + a.balance, 0);
+  
+  var displayName = getUserDisplayName();
 
   return (
     <Page
       eyebrow="SEPTEMBER 2026"
-      title="Good morning, Sarah"
+      title={`Good morning, ${displayName}`}
       description="Here is your financial picture at a glance."
       action={<AddButton onClick={() => nav("/transactions/new")} />}
     >
@@ -55,7 +34,7 @@ export default function Dashboard() {
         </div>
         <div className="hero-score">
           <span>Financial health</span>
-          <strong>82</strong>
+          <strong>{82} </strong>
           <small>Excellent</small>
         </div>
       </div>

@@ -1,27 +1,8 @@
 import type React from "react";
 import { NavLink, useNavigate, Outlet } from "react-router-dom";
-import {
-  LayoutDashboard,
-  WalletCards,
-  ArrowLeftRight,
-  ReceiptText,
-  CreditCard,
-  ChartNoAxesCombined,
-  Target,
-  CalendarDays,
-  Lightbulb,
-  Landmark,
-  Repeat2,
-  Settings,
-  LogOut,
-  Search,
-  Bell,
-  Plus,
-  Menu,
-  X,
-  ShieldCheck,
-} from "lucide-react";
+import {  LayoutDashboard,  WalletCards,  ArrowLeftRight,  ReceiptText,  CreditCard,  ChartNoAxesCombined,  Target,  CalendarDays,  Lightbulb,  Landmark,  Repeat2,  Settings,  LogOut,  Search,  Bell,  Plus,  Menu,  X,  ShieldCheck, } from "lucide-react";
 import { useState } from "react";
+import { getUserDisplayName } from "../services/authService";
 const nav = [
   ["Dashboard", "/dashboard", LayoutDashboard],
   ["Accounts", "/accounts", WalletCards],
@@ -36,9 +17,14 @@ const nav = [
   ["Debts", "/debts", Landmark],
   ["Subscriptions", "/subscriptions", Repeat2],
 ] as const;
+
 export default function Layout() {
+
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+
+  var displayName = getUserDisplayName();
+
   return (
     <div className="app-shell">
       <aside className={open ? "sidebar mobile-open" : "sidebar"}>
@@ -57,7 +43,7 @@ export default function Layout() {
         <div className="workspace">
           <span className="avatar small">SM</span>
           <div>
-            <b>Sarah Miller</b>
+            <b>{displayName}</b>
             <small>Personal account</small>
           </div>
           <span className="dot-online" />
@@ -108,7 +94,7 @@ export default function Layout() {
             </button>
             <button className="profile" onClick={() => navigate("/settings")}>
               <span className="avatar">SM</span>
-              <span className="profile-name">Sarah Miller</span>
+              <span className="profile-name">{displayName}</span>
               <span>⌄</span>
             </button>
           </div>

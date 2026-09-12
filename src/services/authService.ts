@@ -60,6 +60,19 @@ export function getStoredUser(): User | null {
   return raw ? (JSON.parse(raw) as User) : null;
 }
 
+export function getUserDisplayName(): string | null {
+  var user = getStoredUser();
+
+  if(user != null){
+    var display = user.name !== "" ? user.name : 
+                  user.username !== "" ? user.username : "";
+    return display;
+  }
+  else{
+    return "";
+  }
+}
+
 export function isAuthenticated(): boolean {
   return !!getToken();
 }

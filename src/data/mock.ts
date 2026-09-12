@@ -1,4 +1,5 @@
 import type { Account, Bill, Budget, Goal, Transaction } from "../types";
+
 export const accounts: Account[] = [
   {
     id: "a1",
